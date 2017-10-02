@@ -20,7 +20,7 @@ class CocktailsController < ApplicationController
   def update
     get_cocktail
     @cocktail.update(cocktail_params)
-    redirect_to cocktail_path(@coctail)
+    redirect_to cocktail_path(@cocktail)
   end
 
   def show

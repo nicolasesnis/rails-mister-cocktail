@@ -1,0 +1,7 @@
+<%=link_to "back to menu", cocktails_path, class: "btn btn-primary" %>
+
+<%= simple_form_for [@cocktail] do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "edit the cocktail", class: "btn btn-primary" %>
+<% end %>
+
