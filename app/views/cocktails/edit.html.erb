@@ -1,4 +1,4 @@
-<%=link_to "back to menu", cocktails_path, class: "btn btn-primary" %>
+<%=link_to "back to the cocktail", cocktail_path(@cocktail), class: "btn btn-primary" %>
 
 <%= simple_form_for [@cocktail] do |f| %>
   <%= f.input :name %>
