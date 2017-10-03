@@ -1,13 +1,11 @@
-<%=link_to "back to menu", cocktails_path, class: "btn btn-primary" %>
-<br>
-<%= link_to "Edit", edit_cocktail_path(@cocktail), class: "btn btn-primary" %>
+<div class="container" >
+<%= @cocktail.name %>
+<%= link_to "Edit", edit_cocktail_path(@cocktail) %> |
 <%= link_to "Delete", cocktail_path(@cocktail),
-    class: "btn btn-primary",
     method: :delete,
     data: { confirm: "Are you sure?" } %>
-
 <p>
-<%= @cocktail.name %>
+
 <br>
 <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 <br>
@@ -28,3 +26,4 @@
   <%= f.submit "add a dose", class: "btn btn-primary" %>
 <%end%>
 
+</div>
