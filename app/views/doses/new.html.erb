@@ -1,10 +1,7 @@
-<p>Available ingredients</p>
+<p>Add a dose to your cocktail</p>
 
-<% Ingredient.all.each do |ingredient| %>
-  <%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.hidden_field :ingredient, :value => ingredient %>
-  <%= f.input :description, label: "#{ingredient.id}: #{ingredient.name}" %>
-  <%= f.submit "add this dose to the cocktail", class: "btn btn-primary"%>
-  <% end %>
+<%=simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient, collection: Ingredient.all %>
+  <%= f.submit "add a dose", class: "btn btn-primary" %>
 <%end%>
-

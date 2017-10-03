@@ -8,12 +8,20 @@
 
 <p>
   <%= @cocktail.name %>
-  <% @cocktail.ingredients.each do |ingredient| %>
-    <li>
-      <%= "#{ingredient.name}: #{@cocktail.doses[0].description}" %>
-    </li>
-  <% end %>
+ <% @cocktail.doses.each do |dose|%>
+        <%= dose.description %>
+        <%= dose.ingredient.name %>
+        <%= link_to 'Delete dose', dose_path(dose), method: :delete %>
+      <br>
+      <% end %>
 </p>
 
-<%= link_to "Add new dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
+
+<p>Add a dose to your cocktail</p>
+
+<%=simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient, collection: Ingredient.all %>
+  <%= f.submit "add a dose", class: "btn btn-primary" %>
+<%end%>
 

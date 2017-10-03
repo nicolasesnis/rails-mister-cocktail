@@ -59,4 +59,6 @@ gem "font-awesome-sass"
 gem "simple_form"
 gem "autoprefixer-rails"
 
+gem 'figaro'
+
 
