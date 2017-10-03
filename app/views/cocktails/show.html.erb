@@ -7,8 +7,10 @@
     data: { confirm: "Are you sure?" } %>
 
 <p>
-  <%= @cocktail.name %>
- <% @cocktail.doses.each do |dose|%>
+<%= @cocktail.name %>
+<%= cl_image_tag @product.photo, height: 300, width: 400, crop: :fill %>
+
+<% @cocktail.doses.each do |dose|%>
         <%= dose.description %>
         <%= dose.ingredient.name %>
         <%= link_to 'Delete dose', dose_path(dose), method: :delete %>

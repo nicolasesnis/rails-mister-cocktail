@@ -1,8 +1,13 @@
 <%= link_to "Add a new cocktail", new_cocktail_path, class: "btn btn-primary"%>
-<ul>
-  <% @cocktails.each do |cocktail| %>
-  <li>
-    <%= link_to "#{cocktail.name}", cocktail_path(cocktail) %>
-  </li>
-  <%end%>
-</ul>
+
+<% @cocktails.each do |cocktail| %>
+  <div class="card"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+    <div class="card-category">Popular</div>
+    <div class="card-description">
+      <h2><%= link_to "#{cocktail.name}", cocktail_path(cocktail) %></h2>
+    </div>
+    <a class="card-link" href="#" ></a>
+  </div>
+<%end%>
