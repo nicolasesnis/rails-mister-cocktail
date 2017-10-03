@@ -1,5 +1,4 @@
-<%=link_to "back to menu", cocktails_path, class: "btn btn-primary" %>
-
+<div class="container">
 <%= simple_form_for(@cocktail) do |f| %>
   <%= f.input :name %>
   <%= f.input :photo %>
@@ -7,3 +6,4 @@
   <%= f.submit "add a cocktail", class: "btn btn-primary" %>
 <% end %>
 
+</div>

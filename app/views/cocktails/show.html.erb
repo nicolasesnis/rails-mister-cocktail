@@ -1,29 +1,42 @@
 <div class="container" >
-<%= @cocktail.name %>
-<%= link_to "Edit", edit_cocktail_path(@cocktail) %> |
-<%= link_to "Delete", cocktail_path(@cocktail),
-    method: :delete,
-    data: { confirm: "Are you sure?" } %>
-<p>
 
-<br>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-<br>
-<% @cocktail.doses.each do |dose|%>
-        <%= dose.description %>
-        <%= dose.ingredient.name %>
-        <%= link_to 'Delete dose', dose_path(dose), method: :delete %>
-      <br>
+
+  <div class="card big-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @cocktail.photo %>');">
+    <div class="card-category">Popular</div>
+    <div class="card-name">
+      <h2><%= @cocktail.name %></h2>
+      <%= link_to "Edit", edit_cocktail_path(@cocktail), class: "btn btn-primary" %> |
+      <%= link_to "Delete", cocktail_path(@cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "btn btn-danger" %>
+    </div>
+    <br>
+    <div class="card-description">
+      <ul>
+      <% @cocktail.doses.each do |dose|%>
+        <li>
+          <%= "#{dose.ingredient.name.capitalize}: #{dose.description}.        |"%>
+            <%= link_to 'Delete dose', dose_path(dose), method: :delete, class: "zepateforcat" %>
+        <br>
+        </li>
       <% end %>
-</p>
+      </ul>
+    </div>
+    <%= image_tag ('nico.JPG'), class: "avatar card-user"%>
+ </div>
 
 
-<p>Add a dose to your cocktail</p>
+  <br>
 
-<%=simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :description %>
-  <%= f.association :ingredient, collection: Ingredient.all %>
-  <%= f.submit "add a dose", class: "btn btn-primary" %>
-<%end%>
+
+
+  <p>Add a dose to your cocktail</p>
+
+  <%=simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.association :ingredient, collection: Ingredient.all %>
+    <%= f.input :description %>
+    <%= f.submit "add a dose", class: "btn btn-primary" %>
+  <%end%>
 
 </div>
